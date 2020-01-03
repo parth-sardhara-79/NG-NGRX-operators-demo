@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Subscription, timer, of, interval, empty, from, asyncScheduler } from 'rxjs';
+import { Subscription, timer, of, interval, empty, from, asyncScheduler, range } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
 import { map, first, last, startWith, mergeMap } from 'rxjs/operators';
 
@@ -54,13 +54,11 @@ export class AppComponent {
   }
 
   // ===================Map rxjs operator===================
-
   mapOBJ() {
     // const mapOBJ = map(x => x * x)(of(1, 2, 3)).subscribe((v) => console.log(`value: ${v}`));
   }
 
   // ===================First & Last rxjs operator===================
-
   firstLast() {
     first()(of(1, 2, 3)).subscribe((v) => console.log(`First: ${v}`));
     last()(of(1, 2, 3)).subscribe((v) => console.log(`Last: ${v}`));
@@ -107,5 +105,13 @@ export class AppComponent {
     result.subscribe(x => console.log(x));
     console.log('end');
   }
+
+  // ===================range rxjs operator===================
+  range() {
+    const numbers = range(1, 10);
+    numbers.subscribe(x => console.log(x));
+  }
+
+  // ===================range rxjs operator===================
 
 }

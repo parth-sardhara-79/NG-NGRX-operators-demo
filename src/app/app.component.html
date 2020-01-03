@@ -1,47 +1,61 @@
-<!-- Timer Subscribe rxjs operator -->
-<button class="btn btn-primary" (click)="timerOperatorMethod()">Timer Subscribe</button> &nbsp;&nbsp;
-<!-- Timer UnSubscribe rxjs operator -->
-<button class="btn btn-primary" (click)="timerOperatorMethodUnsubscribe()" [disabled]="timerUnsubscribe">Timer Unsubscribe</button>
-&nbsp;&nbsp;
+<div class="container-fluid p-4">
 
-<!-- of rxjs operator -->
-<button class="btn btn-primary" (click)="ofOperatorMethod()">Of Subscribe</button> &nbsp;&nbsp;
+  <div class="card">
+    <div class="card-header">
+      <h1>Creation Operators</h1>
+    </div>
+    <div class="card-body">
+      <!-- Timer Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="timerOperatorMethod()">Timer Subscribe</button> &nbsp;&nbsp;
+      <!-- Timer UnSubscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="timerOperatorMethodUnsubscribe()" [disabled]="timerUnsubscribe">Timer
+        Unsubscribe</button>
+      &nbsp;&nbsp;
 
-<!-- ajax rxjs operator -->
-<button class="btn btn-primary" (click)="ajaxOperatorMethod()">Ajax Subscribe</button> &nbsp;&nbsp;
+      <!-- of rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="ofOperatorMethod()">Of Subscribe</button> &nbsp;&nbsp;
 
-<!-- Map rxjs operator -->
-<button class="btn btn-primary" (click)="mapOBJ()">Map Subscribe</button> &nbsp;&nbsp;
+      <!-- ajax rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="ajaxOperatorMethod()">Ajax Subscribe</button> &nbsp;&nbsp;
 
-<!-- First & Last rxjs operator -->
-<button class="btn btn-primary" (click)="firstLast()">First & Last Subscribe</button> &nbsp;&nbsp;
+      <!-- Map rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="mapOBJ()">Map Subscribe</button> &nbsp;&nbsp;
 
-<!-- interval Subscribe rxjs operator -->
-<button class="btn btn-primary" (click)="intervalSubscribe()">Interval Subscribe</button> &nbsp;&nbsp;
-<!-- interval UnSubscribe rxjs operator -->
-<button class="btn btn-primary" (click)="intervalUnSubscribe()" [disabled]="intervalUnsubscribe">Interval UnSubscribe</button> &nbsp;&nbsp;
-<br>
-<br>
+      <!-- First & Last rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="firstLast()">First & Last Subscribe</button> &nbsp;&nbsp;
 
-<!-- Empty Subscribe rxjs operator -->
-<button class="btn btn-primary" (click)="emptySubscribe()">Empty Subscribe</button> &nbsp;&nbsp;
-<!-- Empty UnSubscribe rxjs operator -->
-<button class="btn btn-primary" (click)="emptyUnSubscribe()" [disabled]="emptyUnsubscribe">Empty UnSubscribe</button> &nbsp;&nbsp;
+      <!-- interval Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="intervalSubscribe()">Interval Subscribe</button> &nbsp;&nbsp;
+      <!-- interval UnSubscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="intervalUnSubscribe()" [disabled]="intervalUnsubscribe">Interval
+        UnSubscribe</button> &nbsp;&nbsp;
 
-<!-- of rxjs operator -->
-<button class="btn btn-primary" (click)="of()">of Subscribe</button> &nbsp;&nbsp;
+      <!-- Empty Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="emptySubscribe()">Empty Subscribe</button> &nbsp;&nbsp;
+      <!-- Empty UnSubscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="emptyUnSubscribe()" [disabled]="emptyUnsubscribe">Empty
+        UnSubscribe</button>
+      &nbsp;&nbsp;
 
-<!-- from rxjs operator -->
-<button class="btn btn-primary" (click)="from()">from Subscribe</button> &nbsp;&nbsp;
+      <!-- of rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="of()">of Subscribe</button> &nbsp;&nbsp;
 
+      <!-- from rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="from()">from Subscribe</button> &nbsp;&nbsp;
 
-<br>
-<hr>
-<ng-container *ngIf="user">
-  <ng-container *ngFor="let users of user">
-    {{users.login}}
-    <br>
+      <!-- range rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="range()">range Subscribe</button> &nbsp;&nbsp;
+    </div>
+  </div>
+
+  <br>
+  <hr>
+  <ng-container *ngIf="user">
+    <ng-container *ngFor="let users of user">
+      {{users.login}}
+      <br>
+    </ng-container>
   </ng-container>
-</ng-container>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+</div>
