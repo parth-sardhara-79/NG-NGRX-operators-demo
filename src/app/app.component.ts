@@ -163,4 +163,10 @@ export class AppComponent {
       map(([age, name, isDev]) => ({ age, name, isDev })),
     ).subscribe(x => console.log(x));
   }
+
+
+  // ===================Transformation Operators===================
+  // buffer, bufferCount, bufferTime, bufferToggle, bufferWhen, concatMap, concatMapTo, exhaust, exhaustMap, expand, groupBy, map, mapTo, mergeMap, mergeMapTo, mergeScan, pairwise, partition, pluck, scan, switchMap, switchMapTo, window, windowCount, windowTime, windowToggle, windowWhen
+  // ===================zip rxjs operator===================
+
 }
