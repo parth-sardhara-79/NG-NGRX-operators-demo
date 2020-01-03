@@ -1,61 +1,97 @@
 <div class="container-fluid p-4">
 
-  <div class="card">
+  <div class="card mb-4">
     <div class="card-header">
       <h1>Creation Operators</h1>
     </div>
     <div class="card-body">
       <!-- Timer Subscribe rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="timerOperatorMethod()">Timer Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="timerOperatorMethod()" [disabled]="!timerUnsubscribe">Timer
+        Subscribe</button>
       <!-- Timer UnSubscribe rxjs operator -->
       <button class="btn btn-primary m-1" (click)="timerOperatorMethodUnsubscribe()" [disabled]="timerUnsubscribe">Timer
         Unsubscribe</button>
-      &nbsp;&nbsp;
 
       <!-- of rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="ofOperatorMethod()">Of Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="ofOperatorMethod()">Of Subscribe</button>
 
       <!-- ajax rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="ajaxOperatorMethod()">Ajax Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="ajaxOperatorMethod()">Ajax Subscribe</button>
 
       <!-- Map rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="mapOBJ()">Map Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="mapOBJ()">Map Subscribe</button>
 
       <!-- First & Last rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="firstLast()">First & Last Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="firstLast()">First & Last Subscribe</button>
 
       <!-- interval Subscribe rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="intervalSubscribe()">Interval Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="intervalSubscribe()" [disabled]="!intervalUnsubscribe">Interval
+        Subscribe</button>
       <!-- interval UnSubscribe rxjs operator -->
       <button class="btn btn-primary m-1" (click)="intervalUnSubscribe()" [disabled]="intervalUnsubscribe">Interval
-        UnSubscribe</button> &nbsp;&nbsp;
+        UnSubscribe</button>
 
       <!-- Empty Subscribe rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="emptySubscribe()">Empty Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="emptySubscribe()" [disabled]="!emptyUnsubscribe">Empty
+        Subscribe</button>
       <!-- Empty UnSubscribe rxjs operator -->
       <button class="btn btn-primary m-1" (click)="emptyUnSubscribe()" [disabled]="emptyUnsubscribe">Empty
         UnSubscribe</button>
-      &nbsp;&nbsp;
 
       <!-- of rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="of()">of Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="of()">of Subscribe</button>
 
       <!-- from rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="from()">from Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="from()">from Subscribe</button>
 
       <!-- range rxjs operator -->
-      <button class="btn btn-primary m-1" (click)="range()">range Subscribe</button> &nbsp;&nbsp;
+      <button class="btn btn-primary m-1" (click)="range()">range Subscribe</button>
+
+      <div class="card-body">
+        <ng-container *ngIf="user">
+          <ng-container *ngFor="let users of user">
+            {{users.login}}
+            <br>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <h1>Join Creation Operators</h1>
+    </div>
+    <div class="card-body">
+      <!-- combineLatest Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="combineLatestSubscribe()"
+        [disabled]="!combineLatestUnsubscribe">combineLatest Subscribe</button>
+      <!-- combineLatest UnSubscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="combineLatestUnSubscribe()"
+        [disabled]="combineLatestUnsubscribe">combineLatest UnSubscribe</button>
+
+      <!-- concat Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="concat()">concat Subscribe</button>
+
+      <!-- race Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="race()" [disabled]="!raceUnsubscribe">race Subscribe</button>
+      <!-- race UnSubscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="raceUnSubscribe()" [disabled]="raceUnsubscribe">race
+        UnSubscribe</button>
+
+      <!-- zip Subscribe rxjs operator -->
+      <button class="btn btn-primary m-1" (click)="zip()">zip Subscribe</button>
     </div>
   </div>
 
   <br>
   <hr>
-  <ng-container *ngIf="user">
+  <!-- <ng-container *ngIf="user">
     <ng-container *ngFor="let users of user">
       {{users.login}}
       <br>
     </ng-container>
-  </ng-container>
+  </ng-container> -->
 
   <router-outlet></router-outlet>
 </div>

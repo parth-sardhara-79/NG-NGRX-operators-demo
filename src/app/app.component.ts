@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Subscription, timer, of, interval, empty, from, asyncScheduler, range } from 'rxjs';
+import { Subscription, timer, of, interval, empty, from, asyncScheduler, range, combineLatest, concat, race, zip } from 'rxjs';
 import { ajax } from 'rxjs/ajax';
-import { map, first, last, startWith, mergeMap } from 'rxjs/operators';
+import { map, first, last, startWith, mergeMap, take, mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +15,12 @@ export class AppComponent {
   public timerUnsubscribe: boolean = true;
   public intervalUnsubscribe: boolean = true;
   public emptyUnsubscribe: boolean = true;
+  public combineLatestUnsubscribe: boolean = true;
+  public raceUnsubscribe: boolean = true;
   public intervalSub;
   public emptySub;
+  public combineLatestSub;
+  public raceSub;
   constructor() { }
 
   // ===================Timer Subscribe and UnSubscribe rxjs operator===================
@@ -112,6 +116,51 @@ export class AppComponent {
     numbers.subscribe(x => console.log(x));
   }
 
-  // ===================range rxjs operator===================
+  // ===================combineLatest Subscribe and UnSubscribe rxjs operator===================
+  combineLatestSubscribe() {
+    this.combineLatestUnsubscribe = false;
+    const firstTimer = timer(0, 1000); // emit 0, 1, 2... after every second, starting from now
+    const secondTimer = timer(500, 1000); // emit 0, 1, 2... after every second, starting 0,5s from now
+    const combinedTimers = combineLatest(firstTimer, secondTimer);
+    this.combineLatestSub = combinedTimers.subscribe(value => console.log(value));
+  }
+  combineLatestUnSubscribe() {
+    this.combineLatestUnsubscribe = true;
+    this.combineLatestSub.unsubscribe();
+  }
 
+  // ===================concat rxjs operator===================
+  concat() {
+    const timer1 = interval(1000).pipe(take(10));
+    const timer2 = interval(2000).pipe(take(6));
+    const timer3 = interval(500).pipe(take(10));
+
+    const result = concat(timer1, timer2, timer3);
+    result.subscribe(x => console.log(x));
+  }
+
+  // ===================race rxjs operator===================
+  race() {
+    this.raceUnsubscribe = false;
+    const obs1 = interval(1000).pipe(mapTo('fast one'));
+    const obs2 = interval(3000).pipe(mapTo('medium one'));
+    const obs3 = interval(5000).pipe(mapTo('slow one'));
+
+    this.raceSub = race(obs3, obs1, obs2).subscribe(winner => console.log(winner));
+  }
+  raceUnSubscribe() {
+    this.raceUnsubscribe = true;
+    this.raceSub.unsubscribe();
+  }
+
+  // ===================zip rxjs operator===================
+  zip() {
+    const age$ = of<number>(27, 25, 29);
+    const name$ = of<string>('Foo', 'Bar', 'Beer');
+    const isDev$ = of<boolean>(true, true, false);
+
+    zip(age$, name$, isDev$).pipe(
+      map(([age, name, isDev]) => ({ age, name, isDev })),
+    ).subscribe(x => console.log(x));
+  }
 }
